@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GitHub Portfolio — YOUR_GITHUB_USERNAME</title>
+  <meta name="description" content="GitHub-focused portfolio (HTML + CSS only)." />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#06b6d4; --glass:rgba(255,255,255,0.03);
+      --radius:12px; --maxw:980px; --ff: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:var(--ff);background:linear-gradient(180deg,#071022 0%,#091226 60%);color:#eaf2fb;
+      display:flex;align-items:center;justify-content:center;padding:36px;
+    }
+    .wrap{width:100%;max-width:var(--maxw);}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:16px;box-shadow:0 12px 40px rgba(2,6,23,0.6)}
+
+    header{display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;color:#02121a}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+
+    .row{display:flex;gap:18px;margin-top:18px}
+    .left{flex:1}
+    .right{width:300px}
+
+    /* GitHub profile banner (image badges) */
+    .badge{background:var(--card);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);text-align:center}
+    .badge img{max-width:100%;border-radius:8px}
+
+    /* Repo list */
+    .repos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+    @media (max-width:780px){.repos{grid-template-columns:1fr}.right{width:100%}.row{flex-direction:column}}
+    .repo{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    .repo h4{margin:0 0 8px 0;font-size:15px}
+    .repo p{margin:0;color:var(--muted);font-size:13px}
+    .meta{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+    .pill{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted)}
+
+    /* Footer small */
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* small utilities */
+    a{color:var(--accent);text-decoration:none}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <header>
+        <div style="display:flex;gap:14px;align-items:center">
+          <div class="logo">GH</div>
+          <div>
+            <h1>YOUR NAME</h1>
+            <p class="lead">GitHub portfolio — <span class="muted">Frontend • JavaScript • Open source</span></p>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <!-- Replace YOUR_GITHUB_USERNAME in the URLs below with your GitHub username -->
+          <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener noreferrer">View GitHub profile →</a>
+          <div class="muted" style="font-size:12px;margin-top:6px">Last updated: <!-- static page, update manually --> </div>
+        </div>
+      </header>
+
+      <div class="row">
+        <main class="left">
+          <section style="margin-top:18px">
+            <h3 style="margin:0 0 12px 0">About</h3>
+            <p class="muted">I build things on GitHub — libraries, web apps and useful tools. Below are some highlighted repositories and quick links to contributions.
+            Edit this file to add your real name, bio, and replace repository links.</p>
+          </section>
+
+          <section style="margin-top:16px">
+            <h3 style="margin:0 0 12px 0">Featured repositories</h3>
+            <div class="repos">
+              <article class="repo">
+                <h4><a href="https://github.com/YOUR_GITHUB_USERNAME/repo-one" target="_blank" rel="noopener noreferrer">repo-one</a></h4>
+                <p class="muted">Short description of repo-one. What problem it solves, main tech used.</p>
+                <div class="meta">
+                  <span class="pill">JavaScript</span>
+                  <span class="pill">⭐ 120</span>
+                  <span class="pill">Updated: 2025-07-10</span>
+                </div>
+              </article>
+
+              <article class="repo">
+                <h4><a href="https://github.com/YOUR_GITHUB_USERNAME/repo-two" target="_blank" rel="noopener noreferrer">repo-two</a></h4>
+                <p class="muted">Short description of repo-two — a demo app or library.</p>
+                <div class="meta">
+                  <span class="pill">React</span>
+                  <span class="pill">⭐ 85</span>
+                  <span class="pill">Updated: 2025-05-03</span>
+                </div>
+              </article>
+
+              <article class="repo">
+                <h4><a href="https://github.com/YOUR_GITHUB_USERNAME/repo-three" target="_blank" rel="noopener noreferrer">repo-three</a></h4>
+                <p class="muted">Short description — utilities, CLI, or tools.</p>
+                <div class="meta">
+                  <span class="pill">Node</span>
+                  <span class="pill">⭐ 42</span>
+                  <span class="pill">Updated: 2024-12-20</span>
+                </div>
+              </article>
+
+              <article class="repo">
+                <h4><a href="https://github.com/YOUR_GITHUB_USERNAME/repo-four" target="_blank" rel="noopener noreferrer">repo-four</a></h4>
+                <p class="muted">Short description — experiments or demos.</p>
+                <div class="meta">
+                  <span class="pill">CSS</span>
+                  <span class="pill">⭐ 18</span>
+                  <span class="pill">Updated: 2025-01-11</span>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <section style="margin-top:18px">
+            <h3 style="margin:0 0 12px 0">Open source & contributions</h3>
+            <p class="muted">Mention notable contributions, organization memberships, or link to a contributions page.</p>
+            <p style="margin-top:8px"><a href="https://github.com/YOUR_GITHUB_USERNAME?tab=projects" target="_blank" rel="noopener noreferrer">View projects on GitHub</a></p>
+          </section>
+
+        </main>
+
+        <aside class="right">
+          <div class="badge">
+            <!-- GitHub readme-stats and streak images are external images — replace USERNAME -->
+            <img src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=dark&hide_border=true" alt="GitHub stats" />
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="badge">
+            <img src="https://github-readme-streak-stats.herokuapp.com/?user=YOUR_GITHUB_USERNAME&theme=dark&hide_border=true" alt="GitHub streak" />
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="badge" style="padding:10px">
+            <h4 style="margin:0 0 8px 0">Quick links</h4>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+              <a href="https://github.com/YOUR_GITHUB_USERNAME?tab=repositories" target="_blank" rel="noopener noreferrer">Repositories</a>
+              <a href="mailto:you@example.com">Email</a>
+              <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer>
+        <div class="muted">Built with ❤️ • Replace placeholders: <code>YOUR_GITHUB_USERNAME</code>, repo links, and your bio.</div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
