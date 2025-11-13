@@ -4,475 +4,357 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Munkashif Zia — Portfolio</title>
+
+  <!-- Simple, modern CSS — no external libraries -->
   <style>
     :root{
-      --bg:#0f1724;
-      --card:#0b1220;
-      --muted:#94a3b8;
-      --accent1:#06b6d4;
-      --accent2:#7c3aed;
-      --glass: rgba(255,255,255,0.04);
-      --glass-strong: rgba(255,255,255,0.06);
-      --radius:14px;
+      --bg: #0b1220;
+      --card: #0f1724;
+      --muted: #98a3b3;
+      --glass: rgba(255,255,255,0.03);
+      --accent: linear-gradient(90deg,#06b6d4,#7c3aed);
+      --radius: 12px;
+      --max-w: 1000px;
+      --gap: 18px;
       --ease: cubic-bezier(.2,.9,.3,1);
-      --max-width:1100px;
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html,body{height:100%;margin:0}
     body{
-      margin:0;
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      /* removed radial gradients — solid background now */
-      background: var(--bg);
-      color:#e6eef8;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background:
+        radial-gradient(600px 300px at 10% 10%, rgba(124,58,237,0.07), transparent),
+        radial-gradient(500px 240px at 90% 90%, rgba(6,182,212,0.05), transparent),
+        var(--bg);
+      color:#eaf2ff;
       -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:32px 20px;
+      padding:28px 18px;
       display:flex;
       justify-content:center;
     }
 
-    .wrap{
+    .container{
       width:100%;
-      max-width:var(--max-width);
+      max-width:var(--max-w);
     }
 
-    /* NAVBAR */
+    /* NAV */
     header{
       position:sticky;
       top:18px;
-      z-index:60;
-      backdrop-filter: blur(6px) saturate(120%);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:20px;
+      background: rgba(255,255,255,0.02);
+      border-radius:14px;
       padding:10px 14px;
-      margin-bottom:26px;
-      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
-    }
-
-    .nav{
+      margin-bottom:24px;
       display:flex;
       align-items:center;
-      gap:14px;
       justify-content:space-between;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
       gap:12px;
+      backdrop-filter: blur(6px);
+      border:1px solid rgba(255,255,255,0.03);
     }
 
+    .brand{display:flex;align-items:center;gap:12px}
     .logo{
-      width:44px;
-      height:44px;
-      border-radius:10px;
-      background:linear-gradient(135deg,var(--accent1),var(--accent2));
-      display:grid;
-      place-items:center;
-      font-weight:700;
-      color:white;
-      box-shadow: 0 6px 18px rgba(124,58,237,0.18), inset 0 -8px 18px rgba(0,0,0,0.18);
-      transform:translateZ(0);
+      width:44px;height:44px;border-radius:10px;
+      background:var(--accent); display:grid; place-items:center; font-weight:700; color:#021124;
+      box-shadow: 0 6px 20px rgba(124,58,237,0.12);
     }
-
-    .brand h1{
-      font-size:16px;
-      margin:0;
-      line-height:1;
-      letter-spacing:0.2px;
-    }
+    .brand h1{font-size:16px;margin:0}
     .brand p{margin:0;font-size:12px;color:var(--muted)}
 
-    nav ul{
-      display:flex;
-      gap:14px;
-      list-style:none;
-      margin:0;
-      padding:0;
-      align-items:center;
-    }
-
+    nav{display:flex;gap:8px;align-items:center}
     nav a{
-      color:var(--muted);
-      text-decoration:none;
-      font-weight:600;
-      font-size:14px;
-      padding:8px 10px;
-      border-radius:10px;
-      position:relative;
-      transition: all 220ms var(--ease);
+      color:var(--muted); text-decoration:none; font-weight:600; padding:8px 10px; border-radius:10px;
+      transition: all 180ms var(--ease); font-size:14px;
     }
-    nav a::after{
-      content:'';
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%) scaleX(0);
-      bottom:6px;
-      width:70%;
-      height:3px;
-      background:linear-gradient(90deg,var(--accent1),var(--accent2));
-      border-radius:6px;
-      transform-origin:center;
-      transition: transform 280ms var(--ease);
-    }
-    nav a:hover{ color: #fff; transform:translateY(-2px);}
-    nav a:hover::after{ transform:translateX(-50%) scaleX(1); }
-
-    .cta{
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
-
+    nav a:hover{ color:#fff; transform:translateY(-3px) }
+    .cta{display:flex;gap:10px;align-items:center}
     .btn{
-      padding:8px 14px;
-      border-radius:10px;
-      font-weight:700;
-      cursor:pointer;
-      border:0;
-      background:linear-gradient(90deg,var(--accent1),var(--accent2));
-      color:#021124;
-      box-shadow: 0 8px 30px rgba(6,182,212,0.08);
-      transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
+      padding:8px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;background:var(--accent);
+      color:#021124; box-shadow:0 10px 30px rgba(6,182,212,0.06);
     }
-    .btn:active{ transform:translateY(2px) }
-    .ghost{
-      background:transparent;
-      color:var(--muted);
-      border-radius:10px;
-      padding:8px 12px;
-      border:1px solid rgba(255,255,255,0.04);
-      transition: all 200ms var(--ease);
-    }
-    .ghost:hover{ color:#fff; transform:translateY(-2px) }
+    .ghost{padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);cursor:pointer}
 
     /* HERO */
     .hero{
-      display:flex;
-      gap:24px;
-      align-items:center;
-      margin:28px 0 36px;
-      padding:26px;
-      border-radius:var(--radius);
+      display:flex;gap:24px;align-items:center;padding:20px;border-radius:14px;
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      box-shadow: 0 10px 40px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03); margin-bottom:22px;
     }
+    .hero-left{flex:1}
+    .title{font-size:22px;margin:0 0 6px}
+    .subtitle{margin:0;color:var(--muted);line-height:1.5;font-size:14px}
 
-    .hero-left{flex:1; min-width:240px}
-    .hero-right{width:320px; display:flex; justify-content:center; align-items:center}
-
-    .title{
-      font-size:22px;
-      margin:0 0 8px;
-      letter-spacing:0.2px;
-    }
-    .subtitle{color:var(--muted); margin:0 0 16px; line-height:1.45}
-
-    /* Tag chips */
-    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px}
+    /* chips */
+    .chips{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
     .chip{
-      padding:8px 12px;
-      border-radius:999px;
-      font-weight:600;
-      font-size:13px;
-      color:var(--muted);
-      background:transparent;
-      border:1px solid rgba(255,255,255,0.03);
-      cursor:pointer;
-      transition: all 180ms var(--ease);
+      padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);
+      background:transparent;color:var(--muted);font-weight:600;cursor:pointer;transition:transform 140ms var(--ease);
     }
-    .chip.active{
-      color:#021124;
-      background:linear-gradient(90deg,var(--accent1),var(--accent2));
-      box-shadow: 0 8px 28px rgba(6,182,212,0.08);
-      transform:translateY(-3px);
-    }
+    .chip.active{background:var(--accent);color:#021124;transform:translateY(-3px)}
 
-    /* Cards grid */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-bottom:40px;
-    }
-
-    @media (max-width:920px){
-      .grid{ grid-template-columns:repeat(2,1fr) }
-      .hero-right{ display:none }
-    }
-    @media (max-width:560px){
-      .grid{ grid-template-columns:1fr }
-      header{ padding:8px }
-      .nav{ gap:10px }
-      .brand h1{ font-size:14px }
-    }
+    /* grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+    @media (max-width:960px){ .grid{grid-template-columns:repeat(2,1fr)} .hero{flex-direction:column} }
+    @media (max-width:560px){ .grid{grid-template-columns:1fr} header{padding:10px} }
 
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:16px;
-      padding:18px;
-      overflow:hidden;
-      position:relative;
-      transform:translateY(18px);
-      opacity:0;
-      transition: transform 700ms var(--ease), opacity 600ms var(--ease), box-shadow 300ms;
-      box-shadow: 0 10px 30px rgba(2,6,23,0.55);
-      border:1px solid rgba(255,255,255,0.03);
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03);
+      transition: transform 220ms var(--ease), box-shadow 220ms var(--ease), opacity 360ms;
+      transform-origin:center; overflow:hidden;
+      box-shadow: 0 8px 26px rgba(2,6,23,0.5);
     }
+    .card.hidden{opacity:0;transform:scale(.98);pointer-events:none}
+    .card:hover{ transform:translateY(-8px) scale(1.01); box-shadow: 0 20px 60px rgba(2,6,23,0.7) }
 
-    .card.visible{ transform:none; opacity:1 }
+    .meta{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted)}
+    h3{margin:0 0 8px;font-size:16px}
+    p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
 
-    .card:hover{ box-shadow: 0 22px 50px rgba(2,6,23,0.72); transform:translateY(-8px) scale(1.01) }
+    .actions{display:flex;gap:8px;margin-top:12px}
+    .outline{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted);cursor:pointer;font-weight:700}
+    .outline:hover{color:#fff}
 
-    .card .meta{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      margin-bottom:12px;
-    }
-    .tag{
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
-      color:var(--muted);
-      background:rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.02);
-    }
+    footer{margin-top:26px;color:var(--muted);text-align:center;font-size:13px}
 
-    .card h3{ margin:4px 0 8px; font-size:16px }
-    .card p{ margin:0 0 12px; color:var(--muted); font-size:13px; line-height:1.4 }
-
-    .card .actions{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      margin-top:8px;
-    }
-
-    /* Cool animated outline button */
-    .outline{
-      padding:8px 12px;
-      border-radius:10px;
-      background:transparent;
-      border:1px solid rgba(255,255,255,0.06);
-      color:var(--muted);
-      font-weight:700;
-      cursor:pointer;
-      position:relative;
-      overflow:hidden;
-    }
-    .outline::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(90deg,var(--accent1),var(--accent2));
-      transform:translateX(-105%);
-      transition:transform 360ms var(--ease);
-      opacity:0.12;
-      pointer-events:none;
-    }
-    .outline:hover::before{ transform:translateX(0) }
-
-    /* subtle tilt effect using mousemove */
-    .card-inner{ transition: transform 200ms var(--ease); transform-origin:center; }
-
-    /* footer */
-    footer{
-      color:var(--muted);
-      text-align:center;
-      padding:30px 0 10px;
-      font-size:13px;
-    }
-
-    /* small utilities */
-    .flex{display:flex; gap:12px; align-items:center}
-    .muted{color:var(--muted)}
+    /* small util */
+    .right-deco{width:260px;height:170px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="container">
 
+    <!-- NAV -->
     <header>
-      <div class="nav">
-        <div class="brand" aria-label="brand">
-          <div class="logo" aria-hidden="true">MZ</div>
-          <div>
-            <h1>Munkashif Zia</h1>
-            <p>Software Developer Trainee</p>
-          </div>
+      <div class="brand">
+        <div class="logo">MZ</div>
+        <div>
+          <h1 style="font-size:15px;margin-bottom:2px">Munkashif Zia</h1>
+          <p style="margin:0;font-size:12px;color:var(--muted)">Software Developer Trainee</p>
         </div>
+      </div>
 
-        <nav>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-        <div class="cta">
-          <button class="ghost" onclick="downloadResume()">Resume</button>
-          <button class="btn" onclick="scrollToSection('#projects')">See Work</button>
-        </div>
+      <div class="cta">
+        <button class="ghost" onclick="downloadResume()">Resume</button>
+        <button class="btn" onclick="scrollTo('#projects')">See Work</button>
       </div>
     </header>
 
-    <main>
-      <section id="home" class="hero" aria-labelledby="hero-heading">
-        <div class="hero-left">
-          <h2 id="hero-heading" class="title">Hi — I'm <strong style="color:transparent;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text">Munkashif Zia</strong>.</h2>
-          <p class="subtitle">Software Developer Trainee focused on building responsive full-stack web apps using React.js, .NET Core and modern UI patterns. I enjoy turning ideas into clean, maintainable code.</p>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-left">
+        <h2 class="title">Hi — I'm <span style="background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800">Munkashif</span></h2>
+        <p class="subtitle">I build clean, maintainable full-stack apps using React.js, .NET Core and modern UI patterns. Trained at Coders Academy — excited to join a development team and grow.</p>
 
-          <div class="chips" id="filters">
-            <button class="chip active" data-filter="all">All</button>
-            <button class="chip" data-filter="react">React</button>
-            <button class="chip" data-filter="dotnet">.NET</button>
-            <button class="chip" data-filter="tailwind">UI</button>
-            <button class="chip" data-filter="node">Node</button>
+        <div class="chips" id="filters">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="react">React</button>
+          <button class="chip" data-filter="dotnet">.NET</button>
+          <button class="chip" data-filter="ui">UI</button>
+        </div>
+
+        <div style="margin-top:14px;display:flex;gap:10px">
+          <button class="btn" onclick="scrollTo('#projects')">View Projects</button>
+          <button class="outline" onclick="openEmail()">Say hello</button>
+        </div>
+      </div>
+
+      <div class="right-deco" aria-hidden="true">
+        <div style="text-align:center">
+          <svg width="72" height="72" viewBox="0 0 24 24" fill="none" style="display:block;margin:auto">
+            <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#g)"/>
+          </svg>
+          <div style="margin-top:8px;color:var(--muted);font-size:13px">Training projects: Doctora · AcademyGo</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" style="margin-top:18px">
+      <h2 style="margin:0 0 12px">Projects</h2>
+
+      <div class="grid" id="grid">
+        <!-- Card A -->
+        <article class="card" data-tags="react,dotnet,ui">
+          <div class="meta">
+            <span class="tag">Doctora</span>
+            <span class="tag" style="opacity:0.8">Healthcare</span>
           </div>
-
-          <div class="flex">
-            <button class="btn" onclick="scrollToSection('#projects')">View Projects</button>
-            <button class="outline" onclick="openEmail()">Say hello</button>
+          <h3>Doctora — Healthcare App</h3>
+          <p>Designed Doctora to digitize OPD workflows and enable real-time doctor-patient coordination using SignalR.</p>
+          <div class="actions">
+            <button class="outline" onclick="openLink('https://www.doctora.live/')">Live</button>
+            <button class="outline" onclick="openLink('#')">Code</button>
           </div>
-        </div>
+        </article>
 
-        <div class="hero-right" aria-hidden="true">
-          <!-- decorative card -->
-          <div style="width:260px;height:300px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;flex-direction:column;justify-content:center;align-items:center;border:1px solid rgba(255,255,255,0.03);">
-            <svg width="96" height="96" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#g)"/>
-              <defs>
-                <linearGradient id="g" x1="0" x2="1">
-                  <stop offset="0" stop-color="#06b6d4"/>
-                  <stop offset="1" stop-color="#7c3aed"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <p class="muted" style="margin-top:12px;text-align:center">Doctora & AcademyGo — training projects</p>
+        <!-- Card B -->
+        <article class="card" data-tags="react,ui">
+          <div class="meta">
+            <span class="tag">AcademyGo</span>
+            <span class="tag">E-Learning</span>
           </div>
-        </div>
-      </section>
+          <h3>AcademyGo — E-Learning</h3>
+          <p>Built course and test modules, and integrated CI/CD pipelines with Azure DevOps during training.</p>
+          <div class="actions">
+            <button class="outline" onclick="openLink('https://academy.codersfoundation.org/')">Demo</button>
+            <button class="outline" onclick="openLink('#')">Trainee</button>
+          </div>
+        </article>
 
-      <section id="projects" style="margin-bottom:16px">
-        <h2 style="margin:0 0 14px">Projects</h2>
-        <div class="grid" id="projectsGrid">
-          <!-- Card 1 -->
-          <article class="card" data-tags="react,dotnet,ui">
-            <div class="card-inner">
-              <div class="meta">
-                <span class="tag">Doctora</span>
-                <span class="tag muted">Healthcare</span>
-              </div>
-              <h3>Doctora — Healthcare App</h3>
-              <p>Designed and implemented Doctora, a healthcare web app that digitizes OPD workflows and enables real-time doctor-patient interaction using SignalR.</p>
-              <div class="actions">
-                <button class="outline" onclick="openLink('https://www.doctora.live/')">Live</button>
-                <button class="ghost" onclick="openLink('https://github.com/munkashifzia/react-taskmanager-app')">Code</button>
-              </div>
-            </div>
-          </article>
+        <!-- Card C -->
+        <article class="card" data-tags="react,dotnet">
+          <div class="meta">
+            <span class="tag">APIs</span>
+            <span class="tag">Backend</span>
+          </div>
+          <h3>REST APIs (C# .NET)</h3>
+          <p>Implemented authenticated REST endpoints with pagination and optimized MySQL queries for performance.</p>
+          <div class="actions">
+            <button class="outline" onclick="openLink('#')">Endpoints</button>
+          </div>
+        </article>
 
-          <!-- Card 2 -->
-          <article class="card" data-tags="react,ui">
-            <div class="card-inner">
-              <div class="meta">
-                <span class="tag">AcademyGo</span>
-                <span class="tag muted">E-Learning</span>
-              </div>
-              <h3>AcademyGo — E-Learning Platform</h3>
-              <p>Built APIs and frontend modules for course management, tests, and user roles. Integrated CI/CD using Azure DevOps.</p>
-              <div class="actions">
-                <button class="outline" onclick="openLink('https://academy.codersfoundation.org/')">Demo</button>
-                <button class="ghost" onclick="openLink('https://trainee.academy.codersfoundation.org/')">Trainee</button>
-              </div>
-            </div>
-          </article>
+        <!-- Card D -->
+        <article class="card" data-tags="ui">
+          <div class="meta">
+            <span class="tag">UI Kit</span>
+            <span class="tag">Design</span>
+          </div>
+          <h3>Component Library</h3>
+          <p>Reusable components & utilities for forms, modals, and cards — focused on accessibility and responsiveness.</p>
+          <div class="actions">
+            <button class="outline" onclick="openLink('#')">Show</button>
+          </div>
+        </article>
 
-          <!-- Card 3 -->
-          <article class="card" data-tags="react,node">
-            <div class="card-inner">
-              <div class="meta">
-                <span class="tag">Task Manager</span>
-                <span class="tag muted">Full-Stack</span>
-              </div>
-              <h3>TaskManager App</h3>
-              <p>Responsive task management app built with React, Axios and a .NET backend. Focused on maintainable structure and a clean UI.</p>
-              <div class="actions">
-                <button class="outline" onclick="openLink('https://https://github.com/munkashifzia/react-taskmanager-app')">Code</button>
-                <button class="ghost" onclick="openLink('#')">Preview</button>
-              </div>
-            </div>
-          </article>
+        <!-- Card E -->
+        <article class="card" data-tags="react">
+          <div class="meta">
+            <span class="tag">Mini Apps</span>
+            <span class="tag">Training</span>
+          </div>
+          <h3>Small Utilities</h3>
+          <p>Several small React utilities: form validators, chart demos, and interactive widgets.</p>
+          <div class="actions">
+            <button class="outline" onclick="openLink('#')">Explore</button>
+          </div>
+        </article>
 
-          <!-- Card 4 -->
-          <article class="card" data-tags="ui">
-            <div class="card-inner">
-              <div class="meta">
-                <span class="tag">UI Kit</span>
-                <span class="tag muted">Design</span>
-              </div>
-              <h3>Component Library</h3>
-              <p>Reusable UI components and utility classes used across training projects. Built with accessibility and responsiveness in mind.</p>
-              <div class="actions">
-                <button class="outline" onclick="openLink('#')">Show</button>
-                <button class="ghost" onclick="openLink('#')">Docs</button>
-              </div>
-            </div>
-          </article>
+        <!-- Card F -->
+        <article class="card" data-tags="react,dotnet">
+          <div class="meta">
+            <span class="tag">Task Manager</span>
+            <span class="tag">Full-Stack</span>
+          </div>
+          <h3>Task Manager</h3>
+          <p>Responsive task manager app using React + .NET backend with a clean, maintainable architecture.</p>
+          <div class="actions">
+            <button class="outline" onclick="openLink('#')">Code</button>
+          </div>
+        </article>
+      </div>
+    </section>
 
-          <!-- Card 5 -->
-          <article class="card" data-tags="dotnet">
-            <div class="card-inner">
-              <div class="meta">
-                <span class="tag">APIs</span>
-                <span class="tag muted">Backend</span>
-              </div>
-              <h3>REST API (C# .NET)</h3>
-              <p>Implemented scalable RESTful endpoints with authentication, pagination, and optimized MySQL queries for performance.</p>
-              <div class="actions">
-                <button class="outline" onclick="openLink('#')">Endpoints</button>
-                <button class="ghost" onclick="openLink('#')">Docs</button>
-              </div>
-            </div>
-          </article>
+    <!-- SKILLS -->
+    <section id="skills" style="margin-top:22px">
+      <h2 style="margin:0 0 10px">Skills</h2>
+      <p style="margin:0 0 8px;color:var(--muted)">React.js · .NET Core · SignalR · Tailwind CSS · MySQL · Azure DevOps</p>
+    </section>
 
-          <!-- Card 6 -->
-          <article class="card" data-tags="react,ui">
-            <div class="card-inner">
-              <div class="meta">
-                <span class="tag">Mini-Apps</span>
-                <span class="tag muted">Training</span>
-              </div>
-              <h3>Small Utilities</h3>
-              <p>Several small React utilities and widgets built during training — charting, form validators and demo flows.</p>
-              <div class="actions">
-                <button class="outline" onclick="openLink('#')">Explore</button>
-                <button class="ghost" onclick="openLink('#')">More</button>
-              </div>
-            </div>
-          </article>
+    <!-- CONTACT -->
+    <section id="contact" style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <div>
+        <h2 style="margin:0 0 6px">Contact</h2>
+        <p style="margin:0;color:var(--muted)">Mau, Uttar Pradesh · <strong style="color:#fff">+91 7348059557</strong> · <a href="mailto:munkashifzia9@gmail.com" style="color:#8be1ef">munkashifzia9@gmail.com</a></p>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn" onclick="openLink('https://www.linkedin.com/in/munkashif-zia-16a435346/')">LinkedIn</button>
+        <button class="outline" onclick="openLink('https://github.com/munkashifzia')">GitHub</button>
+      </div>
+    </section>
 
-        </div>
-      </section>
+    <footer>Built with ❤️ — Simple portfolio · Save as <code>index.html</code></footer>
+  </div>
 
-      <section id="skills" style="margin-bottom:30px">
-        <h2 style="margin:0 0 12px">Skills</h2>
-        <p class="muted" style="margin:0 0 12px">Frameworks, languages and tools I use:</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px">
-          <span class="chip">React.js</span>
-          <span class="chip">.NET Core</span>
-          <span class="chip">SignalR</span>
-          <span class="chip">Tailwind CSS</span>
-          <span class="chip">MySQL</span>
-          <span class="chip">Azure DevOps</span>
-          <span class="chip">VS Code</span>
-        </div>
-      </section>
+  <!-- JavaScript: simple, accessible interactions -->
+  <script>
+    // helpers
+    const openLink = (u) => { if(!u) return; window.open(u,'_blank') }
+    const openEmail = () => window.location.href = 'mailto:munkashifzia9@gmail.com'
+    const downloadResume = () => openLink('https://trainee.academy.codersfoundation.org/TraineeDetails?eid=FEDST240625B01E03')
+    const scrollTo = (sel) => document.querySelector(sel)?.scrollIntoView({behavior:'smooth', block:'start'})
 
-      <section id="contact" style="margin-bottom:50px">
-        <h2 style="margin:0 0 12px">Contact</h2>
-        <p class="muted" style="margin:0 0 12px">Mau, Uttar Pradesh · <strong>+91 7348059557</strong> · <a href="mailto:munkashifzia
+    // tag filters
+    const chips = document.querySelectorAll('.chip')
+    const cards = Array.from(document.querySelectorAll('.card'))
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'))
+        chip.classList.add('active')
+        const f = chip.getAttribute('data-filter')
+        cards.forEach(c => {
+          const tags = c.dataset.tags.split(',')
+          const show = (f === 'all') || tags.includes(f)
+          c.classList.toggle('hidden', !show)
+        })
+      })
+    })
+
+    // reveal animation on scroll (simple)
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting) e.target.style.opacity = 1
+      })
+    }, {threshold: 0.08})
+    cards.forEach((c, i) => {
+      c.style.opacity = 0
+      c.style.transition = 'opacity 420ms ease, transform 300ms ease'
+      obs.observe(c)
+    })
+
+    // small parallax tilt for cards (lightweight)
+    cards.forEach(card => {
+      const inner = card
+      card.addEventListener('mousemove', (ev) => {
+        const r = card.getBoundingClientRect()
+        const dx = (ev.clientX - (r.left + r.width/2)) / r.width
+        const dy = (ev.clientY - (r.top + r.height/2)) / r.height
+        inner.style.transform = `rotateX(${(-dy*4).toFixed(2)}deg) rotateY(${(dx*6).toFixed(2)}deg)`
+      })
+      card.addEventListener('mouseleave', () => inner.style.transform = 'none')
+    })
+
+    // mark first nav link active on load for quick feedback
+    window.addEventListener('load', () => {
+      document.querySelectorAll('nav a')[0].style.color = '#fff'
+      // small initial reveal delay
+      setTimeout(()=> cards.forEach((c,i)=>c.style.opacity=1), 180)
+    })
+
+    // nav color on scroll
+    const navLinks = document.querySelectorAll('nav a')
+    const sections = ['#home','#projects','#skills','#contact'].map(s => document.querySelector(s))
+    window.addEventListener('scroll', () => {
+      const pos = window.scrollY + window.innerHeight/3
+      let idx = 0
+      sections.forEach((sec, i) => { if(sec && sec.offsetTop <= pos) idx = i })
+      navLinks.forEach((a,i) => a.style.color = i === idx ? '#fff' : 'var(--muted)')
+    })
+  </script>
+</body>
+</html>
